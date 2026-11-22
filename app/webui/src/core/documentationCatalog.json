@@ -1,0 +1,119 @@
+[
+  {
+    "id": "current-spec",
+    "title": "PioOne V32 – Aktuelle Spezifikation",
+    "category": "spec",
+    "kind": "markdown",
+    "summary": "V32: Landingpage mit App-Kacheln und zwei Belegschaften, Mein Assistent, konfigurierbarer Workspace, globale Demo-Suche, Aufgaben/Freigaben, Worker-Profile, Marketplace und Teamübersicht. Keycloak/Backend-Produktionsgrenzen klar dokumentiert.",
+    "status": "Aktuell · V32 · React-Demo",
+    "url": "/knowledge/PIOONE-V32-SPECIFICATION.md"
+  },
+  {
+    "id": "PioOne_KMU_Masterplan_DMS_Kosten_V1.xlsx",
+    "title": "KMU-Funktionsmatrix & Kostenmodell",
+    "category": "matrix",
+    "kind": "xlsx",
+    "summary": "56 KMU-Funktionen, DMS-Anforderungen, Softwarealternativen und Kostenannahmen.",
+    "status": "Planungsmodell",
+    "url": "/knowledge/PioOne_KMU_Masterplan_DMS_Kosten_V1.xlsx"
+  },
+  {
+    "id": "PIOONE-V29.2-USER-GUIDE.md",
+    "title": "PioOne V29.2 – Benutzerhandbuch",
+    "category": "guide",
+    "kind": "markdown",
+    "summary": "Erste Schritte, Navigation, KMU-Matrix, DMS und Berechtigungen.",
+    "status": "Neuer Leitfaden / Entwurf",
+    "url": "/knowledge/PIOONE-V29.2-USER-GUIDE.md"
+  },
+  {
+    "id": "PIOONE-V29.2-ARCHITECTURE.md",
+    "title": "PioOne V29.2 – Modularchitektur",
+    "category": "architecture",
+    "kind": "markdown",
+    "summary": "Systemgrenzen, Navigationsstruktur und Rollen digitaler Mitarbeiter.",
+    "status": "Aktueller Architekturentwurf",
+    "url": "/knowledge/PIOONE-V29.2-ARCHITECTURE.md"
+  },
+  {
+    "id": "visual-00.png",
+    "title": "PioOne Datenstruktur-Übersicht",
+    "category": "architecture",
+    "kind": "image",
+    "summary": "Bestandsbild aus der PioOne-Projektdokumentation.",
+    "status": "Historisches Diagramm – Versionsstand prüfen",
+    "url": "/knowledge/visual-00.png"
+  },
+  {
+    "id": "visual-01.png",
+    "title": "PioOne Plattformarchitektur Infografik",
+    "category": "images",
+    "kind": "image",
+    "summary": "Bestandsbild aus der PioOne-Projektdokumentation.",
+    "status": "Historisches Diagramm – Versionsstand prüfen",
+    "url": "/knowledge/visual-01.png"
+  },
+  {
+    "id": "visual-02.png",
+    "title": "PioOne SaaS-Architektur auf einen Blick",
+    "category": "architecture",
+    "kind": "image",
+    "summary": "Bestandsbild aus der PioOne-Projektdokumentation.",
+    "status": "Historisches Diagramm – Versionsstand prüfen",
+    "url": "/knowledge/visual-02.png"
+  },
+  {
+    "id": "visual-03.png",
+    "title": "PioOne V26 – Enterprise-Architektur",
+    "category": "architecture",
+    "kind": "image",
+    "summary": "Bestandsbild aus der PioOne-Projektdokumentation.",
+    "status": "Historisches Diagramm – Versionsstand prüfen",
+    "url": "/knowledge/visual-03.png"
+  },
+  {
+    "id": "visual-04.png",
+    "title": "PioOne: Die KI-native Unternehmensplattform",
+    "category": "images",
+    "kind": "image",
+    "summary": "Bestandsbild aus der PioOne-Projektdokumentation.",
+    "status": "Historisches Diagramm – Versionsstand prüfen",
+    "url": "/knowledge/visual-04.png"
+  },
+  {
+    "id": "product-00.pdf",
+    "title": "PioOne_Starter_Produktbrief_DE_Hochformat",
+    "category": "product",
+    "kind": "pdf",
+    "summary": "Bestehender PioOne-Produktbrief oder Präsentation.",
+    "status": "Bestandsdokument – Versionsstand prüfen",
+    "url": "/knowledge/product-00.pdf"
+  },
+  {
+    "id": "product-01.pdf",
+    "title": "PioOne_Starter_Produktbrief_V4_DE_Hochformat",
+    "category": "product",
+    "kind": "pdf",
+    "summary": "Bestehender PioOne-Produktbrief oder Präsentation.",
+    "status": "Bestandsdokument – Versionsstand prüfen",
+    "url": "/knowledge/product-01.pdf"
+  },
+  {
+    "id": "product-02.pptx",
+    "title": "PioOne_Starter_Produktbrief_V6_PioPost_DE_Hochformat",
+    "category": "product",
+    "kind": "pptx",
+    "summary": "Bestehender PioOne-Produktbrief oder Präsentation.",
+    "status": "Bestandsdokument – Versionsstand prüfen",
+    "url": "/knowledge/product-02.pptx"
+  },
+  {
+    "id": "product-03.pptx",
+    "title": "PioOne_Starter_V8_PioPost_DE",
+    "category": "product",
+    "kind": "pptx",
+    "summary": "Bestehender PioOne-Produktbrief oder Präsentation.",
+    "status": "Bestandsdokument – Versionsstand prüfen",
+    "url": "/knowledge/product-03.pptx"
+  }
+]

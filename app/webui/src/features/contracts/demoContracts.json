@@ -1,0 +1,352 @@
+[
+  {
+    "id": "V-2024-087",
+    "partner": "Demo Partner 01",
+    "typ": "Rahmenvertrag IT-Wartung",
+    "kat": "IT-Service",
+    "ende": "31.03.2027",
+    "status": "aktiv",
+    "risk": "warn",
+    "riskt": "Auto-Verlängerung",
+    "frist": "Kündigung bis 31.12.2026",
+    "kfrist": "3 Monate",
+    "verl": "Verlängert sich um 12 Monate",
+    "wert": 240000,
+    "conf": 97,
+    "clauses": [
+      {
+        "title": "Automatische Verlängerung",
+        "text": "Verlängert sich um 12 Monate, wenn nicht 3 Monate vor Ablauf gekündigt.",
+        "flag": true
+      },
+      {
+        "title": "Haftung",
+        "text": "Beschränkt auf Auftragswert.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2025-044",
+    "partner": "Demo Partner 02",
+    "typ": "Softwarelizenz",
+    "kat": "Software & Lizenzen",
+    "ende": "30.09.2028",
+    "status": "aktiv",
+    "risk": "warn",
+    "riskt": "Preisgleitklausel",
+    "frist": "Preisanpassung 01.10.2027",
+    "kfrist": "6 Monate",
+    "verl": "Keine automatische Verlängerung",
+    "wert": 300000,
+    "conf": 96,
+    "clauses": [
+      {
+        "title": "Preisgleitklausel",
+        "text": "Jährliche Anpassung bis 4 % an Index gebunden.",
+        "flag": true
+      },
+      {
+        "title": "Wartung",
+        "text": "20 % der Lizenzsumme p. a.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2023-061",
+    "partner": "Demo Partner 03",
+    "typ": "Mietvertrag Bürofläche",
+    "kat": "Immobilien & Miete",
+    "ende": "31.12.2029",
+    "status": "aktiv",
+    "risk": "warn",
+    "riskt": "Staffelmiete",
+    "frist": "Kündigung bis 30.06.2029",
+    "kfrist": "6 Monate",
+    "verl": "Verlängert sich um 24 Monate",
+    "wert": 144000,
+    "conf": 95,
+    "clauses": [
+      {
+        "title": "Staffelmiete",
+        "text": "Mieterhöhung 2 % je Jahr, automatisch.",
+        "flag": true
+      },
+      {
+        "title": "Nebenkosten",
+        "text": "Vorauszahlung mit jährlicher Abrechnung.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2022-115",
+    "partner": "Demo Partner 04",
+    "typ": "Mietvertrag Lagerfläche",
+    "kat": "Immobilien & Miete",
+    "ende": "30.09.2027",
+    "status": "aktiv",
+    "risk": "warn",
+    "riskt": "Indexmiete",
+    "frist": "Kündigung bis 31.03.2027",
+    "kfrist": "6 Monate",
+    "verl": "Verlängert sich um 12 Monate",
+    "wert": 72000,
+    "conf": 96,
+    "clauses": [
+      {
+        "title": "Indexmiete",
+        "text": "An den Verbraucherpreisindex gekoppelt.",
+        "flag": true
+      }
+    ]
+  },
+  {
+    "id": "V-2024-033",
+    "partner": "Demo Partner 05",
+    "typ": "Kfz-Leasing Fuhrpark",
+    "kat": "Immobilien & Miete",
+    "ende": "30.06.2027",
+    "status": "aktiv",
+    "risk": "ok",
+    "riskt": "ok",
+    "frist": "—",
+    "kfrist": "3 Monate",
+    "verl": "Keine automatische Verlängerung",
+    "wert": 60000,
+    "conf": 94,
+    "clauses": [
+      {
+        "title": "Leasing",
+        "text": "36 Monate, Kilometervertrag.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2022-201",
+    "partner": "Demo Partner 06",
+    "typ": "Mobilfunk-Rahmenvertrag",
+    "kat": "Telekommunikation",
+    "ende": "15.02.2027",
+    "status": "aktiv",
+    "risk": "crit",
+    "riskt": "Kurze Kündigungsfrist",
+    "frist": "Kündigung bis 01.02.2027",
+    "kfrist": "14 Tage",
+    "verl": "Verlängert sich um 24 Monate",
+    "wert": 48000,
+    "conf": 95,
+    "clauses": [
+      {
+        "title": "Kündigungsfrist",
+        "text": "Nur 14 Tage vor Laufzeitende, sonst 24 Monate Verlängerung.",
+        "flag": true
+      },
+      {
+        "title": "Preis",
+        "text": "Fix über die Laufzeit.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2025-013",
+    "partner": "Demo Partner 07",
+    "typ": "Liefervertrag Hardware",
+    "kat": "Hardware",
+    "ende": "31.12.2027",
+    "status": "aktiv",
+    "risk": "ok",
+    "riskt": "ok",
+    "frist": "—",
+    "kfrist": "2 Monate",
+    "verl": "Keine automatische Verlängerung",
+    "wert": 180000,
+    "conf": 94,
+    "clauses": [
+      {
+        "title": "Lieferung",
+        "text": "Gestaffelt nach Abruf, On-Prem-Systeme.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2024-156",
+    "partner": "Demo Partner 08",
+    "typ": "On-Prem Supportvertrag",
+    "kat": "IT-Service",
+    "ende": "31.08.2027",
+    "status": "in Prüfung",
+    "risk": "ok",
+    "riskt": "ok",
+    "frist": "Freigabe ausstehend",
+    "kfrist": "3 Monate",
+    "verl": "Verlängert sich um 12 Monate",
+    "wert": 120000,
+    "conf": 93,
+    "clauses": [
+      {
+        "title": "Service-Level",
+        "text": "Reaktionszeit 4 h, 24/7.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2023-142",
+    "partner": "Demo Partner 09",
+    "typ": "Dienstleistung Digitalisierung",
+    "kat": "Dienstleistung",
+    "ende": "30.06.2027",
+    "status": "aktiv",
+    "risk": "ok",
+    "riskt": "ok",
+    "frist": "—",
+    "kfrist": "3 Monate",
+    "verl": "Verlängerung auf Wunsch",
+    "wert": 95000,
+    "conf": 97,
+    "clauses": [
+      {
+        "title": "Leistung",
+        "text": "Aktendigitalisierung nach Mengengerüst.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2021-078",
+    "partner": "Demo Partner 10",
+    "typ": "Reinigungsvertrag",
+    "kat": "Facility",
+    "ende": "31.12.2026",
+    "status": "läuft aus",
+    "risk": "crit",
+    "riskt": "Laufzeitende",
+    "frist": "Entscheidung bis 30.11.2026",
+    "kfrist": "1 Monat",
+    "verl": "Endet ohne Verlängerung",
+    "wert": 36000,
+    "conf": 98,
+    "clauses": [
+      {
+        "title": "Laufzeit",
+        "text": "Endet zum 31.12.2026, keine automatische Verlängerung.",
+        "flag": true
+      }
+    ]
+  },
+  {
+    "id": "V-2023-130",
+    "partner": "Demo Partner 11",
+    "typ": "Wartungsvertrag Aufzug",
+    "kat": "Facility",
+    "ende": "31.07.2027",
+    "status": "aktiv",
+    "risk": "ok",
+    "riskt": "ok",
+    "frist": "—",
+    "kfrist": "3 Monate",
+    "verl": "Verlängert sich um 12 Monate",
+    "wert": 12000,
+    "conf": 96,
+    "clauses": [
+      {
+        "title": "Wartung",
+        "text": "Zwei Wartungen pro Jahr, Störungsdienst.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2024-061",
+    "partner": "Demo Partner 12",
+    "typ": "Grünpflege Außenanlagen",
+    "kat": "Facility",
+    "ende": "31.03.2027",
+    "status": "aktiv",
+    "risk": "ok",
+    "riskt": "ok",
+    "frist": "—",
+    "kfrist": "2 Monate",
+    "verl": "Verlängert sich um 12 Monate",
+    "wert": 18000,
+    "conf": 95,
+    "clauses": [
+      {
+        "title": "Leistung",
+        "text": "Grünpflege und Winterdienst.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2024-120",
+    "partner": "Demo Partner 13",
+    "typ": "Objektschutz / Sicherheitsdienst",
+    "kat": "Sicherheit",
+    "ende": "31.10.2027",
+    "status": "aktiv",
+    "risk": "ok",
+    "riskt": "ok",
+    "frist": "—",
+    "kfrist": "3 Monate",
+    "verl": "Verlängert sich um 12 Monate",
+    "wert": 54000,
+    "conf": 95,
+    "clauses": [
+      {
+        "title": "Leistung",
+        "text": "Pförtnerdienst und Objektschutz, rund um die Uhr.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2025-070",
+    "partner": "Demo Partner 14",
+    "typ": "Verbandsmitgliedschaft",
+    "kat": "Mitgliedschaften",
+    "ende": "31.12.2027",
+    "status": "aktiv",
+    "risk": "ok",
+    "riskt": "ok",
+    "frist": "—",
+    "kfrist": "3 Monate",
+    "verl": "Verlängert sich um 12 Monate",
+    "wert": 3600,
+    "conf": 97,
+    "clauses": [
+      {
+        "title": "Mitgliedschaft",
+        "text": "Jahresbeitrag, jährlich kündbar.",
+        "flag": false
+      }
+    ]
+  },
+  {
+    "id": "V-2023-099",
+    "partner": "Demo Partner 15",
+    "typ": "Betriebshaftpflicht",
+    "kat": "Versicherung",
+    "ende": "31.12.2027",
+    "status": "aktiv",
+    "risk": "ok",
+    "riskt": "ok",
+    "frist": "—",
+    "kfrist": "3 Monate",
+    "verl": "Verlängert sich um 12 Monate",
+    "wert": 22000,
+    "conf": 98,
+    "clauses": [
+      {
+        "title": "Deckung",
+        "text": "5 Mio € je Schadenfall.",
+        "flag": false
+      }
+    ]
+  }
+]
