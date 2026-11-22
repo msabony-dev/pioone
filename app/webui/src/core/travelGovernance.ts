@@ -1,0 +1,2 @@
+export function canApproveTravel(ownerId:string,actorId:string,isAuthorized:boolean){return !!actorId&&ownerId!==actorId&&isAuthorized;}
+export function canApproveExpense(ownerId:string,travelApproverId:string|undefined,actorId:string,explicitFinancePermission:boolean,financeMembership:boolean,moduleAllowed:boolean){return !!actorId&&!!travelApproverId&&ownerId!==actorId&&travelApproverId!==actorId&&explicitFinancePermission&&financeMembership&&moduleAllowed;}

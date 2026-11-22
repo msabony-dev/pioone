@@ -1,0 +1,129 @@
+{
+  "CRM": [
+    "Leads",
+    "Sales Pipeline",
+    "Opportunities",
+    "Accounts",
+    "Contacts",
+    "Marketing",
+    "Quotations",
+    "Customer Service",
+    "Partners",
+    "Forecasting",
+    "Commissions"
+  ],
+  "ERP": [
+    "Accounting",
+    "General Ledger",
+    "Receivables",
+    "Payables",
+    "Banking & Payments",
+    "Invoicing",
+    "Controlling",
+    "Budgets",
+    "Inventory Management",
+    "Warehouse Management",
+    "Procurement",
+    "Suppliers",
+    "Sales Orders",
+    "Assets",
+    "Manufacturing",
+    "Logistics",
+    "Subscriptions",
+    "Cash Flow",
+    "Tax Management",
+    "Invoice Capture",
+    "Delivery Note Capture",
+    "Receipt Capture"
+  ],
+  "HR": [
+    "Employees",
+    "Organization",
+    "Recruitment",
+    "Onboarding",
+    "Offboarding",
+    "Time & Attendance",
+    "Leave",
+    "Payroll",
+    "Expenses",
+    "Performance",
+    "Learning",
+    "Workforce Planning",
+    "Self-Service",
+    "Personnel Document Capture"
+  ],
+  "Projects": [
+    "Projects",
+    "Kanban",
+    "Milestones",
+    "Resources",
+    "Timesheets",
+    "Project Budget"
+  ],
+  "Products & Services": [
+    "Product Catalog",
+    "Service Catalog",
+    "Pricing",
+    "Product Lifecycle"
+  ],
+  "Tenders & Contracts": [
+    "Tenders",
+    "Proposals",
+    "Contracts",
+    "Deadlines",
+    "Renewals"
+  ],
+  "IT Service Management": [
+    "Tickets",
+    "IT Assets",
+    "Incidents",
+    "Changes"
+  ],
+  "Facility Management": [
+    "Buildings",
+    "Rooms",
+    "Maintenance"
+  ],
+  "Quality Management": [
+    "Inspections",
+    "Corrective Actions",
+    "Quality Processes"
+  ],
+  "Business Intelligence": [
+    "Dashboards",
+    "Financial Analytics",
+    "Sales Analytics",
+    "Forecasts",
+    "Reports"
+  ],
+  "Governance & Compliance": [
+    "Risks",
+    "Compliance",
+    "Audit",
+    "Data Protection",
+    "Policies"
+  ],
+  "Document Processing": [
+    "Capture Center",
+    "Digital Mailroom",
+    "Review Queue",
+    "Processing Studio"
+  ],
+  "Travel Management": [
+    "Travel Requests",
+    "Travel Approvals",
+    "Travel Booking",
+    "Travel Expenses",
+    "Travel Policies",
+    "Travel Analytics"
+  ],
+  "Contracts (PioPakt)": [
+    "Contract Dashboard",
+    "Contract Register",
+    "Contract Intake",
+    "Contract Deadlines",
+    "Contract Approvals",
+    "Contract Analytics",
+    "Contract Settings"
+  ]
+}

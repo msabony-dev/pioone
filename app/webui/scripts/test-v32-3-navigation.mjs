@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const load=p=>fs.readFileSync(new URL(`../${p}`,import.meta.url),'utf8');
+const landing=load('src/features/LandingPage.tsx');
+const i18n=load('src/locales/i18n.tsx');
+const app=load('src/app/AppShell.tsx');
+const css=load('src/features/landing.css');
+assert.match(landing,/localStorage\.setItem\('pio19-language',next\)/);
+assert.match(landing,/localStorage\.getItem\('pio19-language'\)/);
+assert.match(landing,/onClick=\{onLogin\}>\{t\('Jetzt anmelden','Sign in now'\)/);
+assert.doesNotMatch(landing,/loginError|const login=onLogin/);
+assert.doesNotMatch(i18n,/\.replace\(\/DCOS\/g/);
+assert.match(i18n,/s==='DCOS'/);
+assert.match(app,/section==='Communication'\?<>\{comm\.map/);
+assert.doesNotMatch(app,/trLabel\("COMMUNICATION"\)<\/small>\{comm\.map/);
+assert.match(css,/\.pio-landing \.lp-hero h1\.lp-v30-title \{[\s\S]*?white-space: normal/);
+console.log('V32.3 navigation/landing regressions: PASS');

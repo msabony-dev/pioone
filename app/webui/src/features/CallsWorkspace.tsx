@@ -1,0 +1,11 @@
+import {useLanguage} from '../locales/i18n';
+import {TravelManagement} from '../features/TravelManagement';
+import {Organisation,seedModuleWorkers,type PersonalBindings} from '../features/Organisation';
+import {WorkerSettings, initialWorkers, resolveWorker, type WorkerState} from '../features/WorkerSettings';
+import {PioChat, type ChatThread} from '../features/PioChat';
+import {organizations, storagePrefix, resetDemo, type Scope} from '../core/workspaces';
+import {Capture,Studio,captureRoutes} from '../Capture';
+import React,{useState} from 'react';import{Plane,Home,Mail,CalendarDays,Video,MessageCircle,Phone,Users,Inbox,Files,Brain,ListTodo,Settings,Bot,Search,Sun,Moon,Bell,Plus,Send,Archive,Trash2,Star,Reply,Forward,Paperclip,PanelRightClose,Sparkles,ShieldCheck,LayoutGrid,ChevronDown,Check,Clock,Plug,Building2,Menu,Briefcase,Wallet,UserRound,FolderKanban,Package,FileCheck,Headphones,Building,ChartNoAxesCombined,Shield,PanelLeftClose,PanelLeftOpen}from'lucide-react';import modules from '../modules.json';
+import {documentNav,appIcons,AppIcon,appCatalog,allModules,initial,rail,comm,folders,settings,useLocal,catalog,defaults,seedTeams,seedPeople,profiles,workerNames,type Message,type ProviderConfig,type Team,type Person} from '../app/catalog';
+import {useWorkspace} from '../stores/WorkspaceStore';
+export function CallsWorkspace(){const {t:trLabel}=useLanguage();const {telephone,STel,target,STarget,callLog,SL,service,chosen,page,section,N}=useWorkspace();return (<section className="card"><h2>{trLabel("Start a call")}</h2><label>{trLabel("Call type")}<select value={telephone?'phone':'video'} onChange={e=>STel(e.target.value==='phone')}><option value="video">{trLabel("Audio / video")}</option><option value="phone">{trLabel("Telephone / VoIP")}</option></select></label><label>{trLabel("Recipient")}<input value={target} onChange={e=>STarget(e.target.value)} placeholder={trLabel("Contact or phone number")}/></label><button className="primary" disabled={!target.trim()||!chosen(service(page))} onClick={()=>{SL([...callLog,chosen(service(page))+' · '+target]);STarget('');N('Local call request recorded. No call was placed.')}}>{trLabel("Simulate call")}</button>{callLog.map((x,i)=><p key={i} className="bubble">{x}</p>)}</section>);}
