@@ -40,7 +40,7 @@ export function DocumentsOverview(){
  const update=(id:string,changes:Partial<DocNode>)=>setNodes(prev=>prev.map(n=>n.id===id?{...n,...changes,modified:new Date().toISOString()}:n));
  const canModify=Boolean(active&&writable&&active.drive===drive&&!active.isTrashed);const title=drives.find(d=>d.id===drive)!.name;
  return <div className="v28-docs">
-  <div className="v28-header"><div><small>{t('PIOONE PERSONAL & ENTERPRISE WORKSPACE')} · V29.1</small><h2>{t('Database')}</h2><p>{t('Your files, folders, enterprise documents and connected drives in one workspace.')}</p></div><span className="v28-demo"><Info size={15}/>{t('Local browser demo — no cloud files are connected')}</span></div>
+  <div className="v28-header"><div><small>{t('PIOONE PERSONAL & ENTERPRISE WORKSPACE')} · V28</small><h2>{t('Documents')}</h2><p>{t('Your files, folders, enterprise documents and connected drives in one workspace.')}</p></div><span className="v28-demo"><Info size={15}/>{t('Local browser demo — no cloud files are connected')}</span></div>
   <div className="v28-layout">
    <aside className="v28-sidebar">
     <div className="v28-sidebar-label">{t('MY WORKSPACE')}</div>
