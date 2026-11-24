@@ -6,7 +6,7 @@
 // Job trigger: "GitHub hook trigger for GITScm polling".
 //
 // VITE_* is compiled into the JS bundle. Changing Keycloak means a rebuild.
-// Default auth mode is demo so the first deploy is usable without SSO.
+// Sign-in uses the pioone realm on dev.auth.piosphere.ai. Demo mode is local only.
 pipeline {
     agent any
 
@@ -22,8 +22,10 @@ pipeline {
         HOST_PORT = '3523'
         CONTAINER_PORT = '8080'
 
-        VITE_AUTH_MODE = 'demo'
-        VITE_KEYCLOAK_URL = ''
+        // Baked into the JS bundle at docker build. Public PKCE client:
+        // there is no client secret to inject when the container starts.
+        VITE_AUTH_MODE = 'keycloak'
+        VITE_KEYCLOAK_URL = 'https://dev.auth.piosphere.ai'
         VITE_KEYCLOAK_REALM = 'pioone'
         VITE_KEYCLOAK_CLIENT_ID = 'pioone-web'
     }
@@ -46,10 +48,10 @@ pipeline {
                         -f app/webui/Dockerfile \
                         -t "$IMAGE_NAME:$SHORT_COMMIT" \
                         -t "$IMAGE_NAME:latest" \
-                        --build-arg "VITE_AUTH_MODE=$VITE_AUTH_MODE" \
-                        --build-arg "VITE_KEYCLOAK_URL=$VITE_KEYCLOAK_URL" \
-                        --build-arg "VITE_KEYCLOAK_REALM=$VITE_KEYCLOAK_REALM" \
-                        --build-arg "VITE_KEYCLOAK_CLIENT_ID=$VITE_KEYCLOAK_CLIENT_ID" \
+                        --build-arg "VITE_AUTH_MODE=${VITE_AUTH_MODE-}" \
+                        --build-arg "VITE_KEYCLOAK_URL=${VITE_KEYCLOAK_URL-}" \
+                        --build-arg "VITE_KEYCLOAK_REALM=${VITE_KEYCLOAK_REALM-}" \
+                        --build-arg "VITE_KEYCLOAK_CLIENT_ID=${VITE_KEYCLOAK_CLIENT_ID-}" \
                         app/webui
                 '''
             }
