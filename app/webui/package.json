@@ -8,7 +8,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:model": "node scripts/test-model.mjs",
-    "test:documents": "node scripts/test-documents.mjs"
+    "test:documents": "node scripts/test-documents.mjs",
+    "build:guides": "node scripts/build-guides.mjs",
+    "prebuild": "npm run build:guides",
+    "predev": "npm run build:guides"
   },
   "dependencies": {
     "react": "^18.2.0",

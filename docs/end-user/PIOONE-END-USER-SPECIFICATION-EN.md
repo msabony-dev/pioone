@@ -1,14 +1,14 @@
 # PioOne — End-User Product Specification (English)
 
-**Product:** PioOne by PioVation  
-**Version baseline:** V32.5  
-**Audience:** Employees, team leaders, managers and organizational administrators  
-**Document type:** End-user product and intended capabilities specification  
-**Important:** V32.5 in the connected repository is a **frontend prototype**, with demonstration data and interactions. The descriptions below distinguish current prototype experience from planned production services. They are not commitments that all backend functions are available today.
+**Product:** PioOne by PioVation
+**Version baseline:** V42
+**Audience:** Employees, team leaders, managers and organizational administrators
+**Document type:** End-user product and intended capabilities specification
+**Important:** V42 in the connected repository is a **frontend prototype**, with demonstration data and interactions. The descriptions below distinguish current prototype experience from planned production services. They are not commitments that all backend functions are available today.
 
 ## 1. PioOne at a glance
 
-**PioOne is the AI-native enterprise workspace for all your daily work.** It combines people, digital workers, communications, personal files, enterprise applications and workflows in a single environment. Rather than moving between separate systems to check emails, review documents, follow up on customers and approve requests, users can organize work from one workspace.
+**PioOne is the AI-native enterprise operating system for your daily work.** It combines people, digital workers, communications, personal files, enterprise applications and workflows in a single environment. Rather than moving between separate systems to check emails, review documents, follow up on customers and approve requests, users can organize work from one workspace.
 
 PioOne is designed around two collaborating workforces: human employees retain accountability for decisions, while digital workers help prepare, coordinate and execute approved tasks.
 
@@ -53,6 +53,13 @@ PioOne's target workspace also includes HR, Projects, Travel, Contracts/PioPakt,
 ### Digital workforce and Workflows
 A digital worker has a defined role, permitted data sources, assigned applications, tools and a responsible human. Use workflow templates for Lead-to-Cash, Procure-to-Pay, Hire-to-Retire and Request-to-Resolution. Progress, human approvals and results should be traceable.
 
+### V42 navigation and workflow Digital Workers
+My Assistant keeps personal briefings, PioBrain, communication, tasks and approvals. Process-oriented roles are under **Digital Workers (DW) > DWs > Workflows**, with twelve workflow templates plus **DW-Workflow-Automation**. Every workflow role begins with DW-, including DW-Lead-to-Cash and DW-Procure-to-Pay.
+
+Use **DW Organisations** to view digital positions and responsibilities. Under **DW Settings**, Worker Factory manages worker definitions and versions; Worker assignments controls role status and runtime bindings; Digital positions manages accountability. **Settings > Database & Backup** contains local database and backup configuration previews.
+
+Active/Deactivated, Run, Edit and Settings controls are demonstration interactions. Run displays a local preview warning; it does not execute a production workflow. Existing worker versions and bindings remain in the shared browser-local registry.
+
 ### PioBrain knowledge
 Search and work with permitted organizational knowledge using documents and data with source references. Indexing personal files requires explicit access permission or another valid organizational basis; a generated AI answer must not replace an authoritative business record.
 
@@ -84,9 +91,9 @@ PioPost scan or uploaded document → extraction/classification → DMS file ver
 
 PioOne is designed for desktop browsers, tablets and smartphones. The workspace supports English and German UI language choices. Specific screen responsiveness and translation completeness must be tested for each release.
 
-## 7. What is available in V32.5?
+## 7. What is available in V42?
 
-**Verified repository description:** V32.5 contains a React/Vite frontend prototype, PioVation branding, a public landing page, demonstration workflows, configurable Keycloak OIDC login flows and browser-local demonstration data. The repository README explicitly states there is **no production backend**, no live PostgreSQL APIs/object storage/connector authorization, no full access-control enforcement, no live RAG indexing and no operational backup/restore.
+**Verified repository description:** V42 contains a React/Vite frontend prototype, PioVation branding, a public landing page, demonstration workflows, configurable Keycloak OIDC login flows and browser-local demonstration data. The repository README explicitly states there is **no production backend**, no live PostgreSQL APIs/object storage/connector authorization, no full access-control enforcement, no live RAG indexing and no operational backup/restore.
 
 **Planned implementation:** persistent multi-user data, file synchronization, real CRM/ERP transactions, authorized PioWorker execution, production audit/approval services, RAG indexing, storage connectors and disaster recovery.
 
