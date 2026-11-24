@@ -52,7 +52,7 @@ pipeline {
                         --build-arg "VITE_KEYCLOAK_URL=${VITE_KEYCLOAK_URL-}" \
                         --build-arg "VITE_KEYCLOAK_REALM=${VITE_KEYCLOAK_REALM-}" \
                         --build-arg "VITE_KEYCLOAK_CLIENT_ID=${VITE_KEYCLOAK_CLIENT_ID-}" \
-                        app/webui
+                        .
                 '''
             }
         }
