@@ -1,5 +1,23 @@
 [
   {
+    "id": "end-user-v42-en",
+    "title": "PioOne V42 – End-user guide (English)",
+    "category": "guide",
+    "kind": "html",
+    "summary": "Navigation, workflow DWs, DW Settings and local demo limitations.",
+    "status": "V42 · Frontend demo",
+    "url": "/guides/PIOONE-END-USER-SPECIFICATION-EN.html"
+  },
+  {
+    "id": "end-user-v42-de",
+    "title": "PioOne V42 – Leitfaden für Anwender",
+    "category": "guide",
+    "kind": "html",
+    "summary": "Navigation, Workflow-DWs, DW Settings und Grenzen der lokalen Demo.",
+    "status": "V42 · Frontend demo",
+    "url": "/guides/PIOONE-END-USER-SPECIFICATION-DE.html"
+  },
+  {
     "id": "current-spec",
     "title": "PioOne V32 – Aktuelle Spezifikation",
     "category": "spec",

@@ -1,10 +1,10 @@
 # PioOne – Produktspezifikation für Endanwender (Deutsch)
 
-**Produkt:** PioOne von PioVation  
-**Versionsbasis:** V32.5  
-**Zielgruppe:** Beschäftigte, Teamleitungen, Führungskräfte und Administratoren  
-**Dokumenttyp:** Produkt- und Funktionsbeschreibung für Endanwender  
-**Wichtig:** Die im Repository veröffentlichte Version V32.5 ist ein **Frontend-Prototyp** mit Demo-Daten und simulierten Abläufen. Die nachfolgende Beschreibung trennt bereits demonstrierte Bedienoberflächen von geplanten produktiven Funktionen. Sie ist keine Zusage, dass alle Backend-Dienste bereits funktionieren.
+**Produkt:** PioOne von PioVation
+**Versionsbasis:** V42
+**Zielgruppe:** Beschäftigte, Teamleitungen, Führungskräfte und Administratoren
+**Dokumenttyp:** Produkt- und Funktionsbeschreibung für Endanwender
+**Wichtig:** Die im Repository veröffentlichte Version V42 ist ein **Frontend-Prototyp** mit Demo-Daten und simulierten Abläufen. Die nachfolgende Beschreibung trennt bereits demonstrierte Bedienoberflächen von geplanten produktiven Funktionen. Sie ist keine Zusage, dass alle Backend-Dienste bereits funktionieren.
 
 ## 1. PioOne auf einen Blick
 
@@ -63,6 +63,14 @@ Das Zielbild umfasst außerdem HR, Projekte, Reisen, PioPakt-Vertragsmanagement,
 
 Digitale Mitarbeiter besitzen definierte Aufgaben, Berechtigungen, Werkzeuge, Fachanwendungen und einen menschlichen Verantwortlichen. Geplante End-to-End-Prozesse sind unter anderem Lead-to-Cash, Procure-to-Pay, Hire-to-Retire und Request-to-Resolution. Aktionen und menschliche Freigaben müssen nachvollziehbar sein.
 
+### V42-Navigation und Workflow Digital Workers
+
+Mein Assistent behält persönliche Briefings, PioBrain, Kommunikation, Aufgaben und Freigaben. Prozessorientierte Rollen stehen unter **Digital Workers (DW) > DWs > Workflows**: zwölf Workflow-Vorlagen sowie **DW-Workflow-Automation**. Alle Workflow-Rollen beginnen mit DW-, etwa DW-Lead-to-Cash und DW-Procure-to-Pay.
+
+**DW Organisations** zeigt digitale Positionen und Verantwortlichkeiten. Unter **DW Settings** verwaltet Worker Factory Definitionen und Versionen; Worker assignments steuert Rollenstatus und Laufzeitzuordnungen; Digital positions verwaltet Verantwortlichkeiten. **Settings > Database & Backup** enthält lokale Vorschauen für Datenbank- und Backup-Einstellungen.
+
+Active/Deactivated, Run, Edit und Settings sind Demo-Bedienelemente. Run zeigt einen lokalen Vorschauhinweis und führt keinen produktiven Workflow aus. Vorhandene Worker-Versionen und Zuordnungen bleiben im gemeinsamen lokalen Browser-Register erhalten.
+
 ### PioBrain – Unternehmenswissen
 
 PioBrain dient dazu, berechtigte Dokumente und Wissensquellen mit nachvollziehbaren Quellenangaben auszuwerten. Private Dateien dürfen nur nach zulässiger Berechtigungs- oder Freigabegrundlage indexiert beziehungsweise abgerufen werden. KI-Antworten ersetzen keine verbindlichen Geschäftsdaten.
@@ -97,7 +105,7 @@ PioPost-Scan oder Dateiupload → Texterkennung/Klassifizierung → DMS-Version 
 
 PioOne ist für Desktop, Tablet und Smartphone konzipiert und bietet die Oberflächensprachen **Deutsch und Englisch**. Die vollständige Übersetzung und mobile Eignung müssen für jede Veröffentlichung getestet werden.
 
-## 7. Welche Funktionen sind in V32.5 tatsächlich verfügbar?
+## 7. Welche Funktionen sind in V42 tatsächlich verfügbar?
 
 **Im Repository belegt:** React/Vite-Frontend-Prototyp, PioVation-Branding, öffentliche Landingpage, simulierte Workflows, konfigurierbare Keycloak/OIDC-Anmeldeoberfläche und lokale Demo-Daten. Laut Repository-README gibt es **noch kein vollständiges produktives Backend** mit PostgreSQL-APIs, Object Storage, verbindlicher Connector-Autorisierung, vollständiger serverseitiger Zugriffskontrolle, echtem RAG-Indexing und betriebsfähigem Backup/Restore.
 
