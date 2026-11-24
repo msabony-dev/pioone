@@ -1,7 +1,7 @@
 import {useLanguage} from '../locales/i18n';
 import React,{useState} from 'react';
 export type Release={version:string,endpoint:string,notes:string,created:string,status:'Draft'|'Published'|'Retired'};
-export type Worker={id:string,name:string,releases:Release[]};
+export type Worker={id:string,name:string,releases:Release[],status?:'active'|'deactivated',runtimeWorkerId?:string,description?:string};
 export type Binding={workerId:string,mode:'latest'|'pinned',version:string};
 export type WorkerState={workers:Worker[],bindings:Record<string,Binding>};
 export const initialWorkers=(names:string[]):WorkerState=>({workers:names.map(name=>({id:name,name,releases:[{version:'1.0.0',endpoint:'',notes:'Illustrative initial release',created:'',status:'Published'}]})),bindings:{}});

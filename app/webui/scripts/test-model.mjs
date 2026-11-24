@@ -93,7 +93,18 @@ assert.equal(new Set(allV26.map(x=>x.id)).size,12);
 for(const w of allV26){assert.ok(w.stages.length>=6);assert.ok(w.stages.some(s=>s.approval));assert.ok(w.stages.every(s=>s.id&&s.app&&s.worker));}
 for(const w of allV26){let r=createV26(w.id,'Demo case','Demo officer','V26-1','2026-11-20T00:00:00Z',{caseReference:'CASE-001',applicant:'Demo Applicant',department:'Office A',dueDate:'2026-12-31'});assert.equal(r.caseReference,'CASE-001');for(let i=0;i<w.stages.length;i++){if(w.stages[i].approval){const pending=stepV26(r,false);assert.equal(pending.status,'awaiting-approval');assert.equal(pending.stage,i);r=stepV26(pending,true);}else r=stepV26(r,false);}assert.equal(r.status,'completed');}
 let pub=createV26('Application-to-Decision','External application','Caseworker','CASE-2');pub=returnForInformation(pub,'Missing document');assert.equal(pub.status,'returned-for-information');assert.equal(stepV26(pub).stage,0);assert.equal(returnForInformation(pub,'').status,'returned-for-information');pub=resumeRun(pub,'Received supporting document');assert.equal(pub.status,'active');pub=rejectRun(pub,'Not eligible');assert.equal(pub.status,'rejected');assert.equal(stepV26(pub).status,'rejected');
-assert.ok(validRoute('DCOS','Public Workflows'));assert.ok(validRoute('DCOS','Internal Administration'));
+// V42 workflow entry points live in the Digital Workers catalog.
+assert.ok(!validRoute('DCOS','Public Workflows'));assert.ok(!validRoute('DCOS','Internal Administration'));
+const {DIGITAL_WORKER_CATEGORIES,DIGITAL_WORKER_NAMES}=load('src/features/digitalWorkerCatalog.ts');
+const workflowWorkers=DIGITAL_WORKER_CATEGORIES.find(c=>c.name==='Workflows').workers;
+assert.equal(workflowWorkers.length,13);
+for(const workflow of allV26)assert.ok(workflowWorkers.includes('DW-'+workflow.id),workflow.id);
+assert.ok(workflowWorkers.includes('DW-Workflow-Automation'));
+assert.equal(new Set(DIGITAL_WORKER_NAMES).size,DIGITAL_WORKER_NAMES.length);
+for(const worker of workflowWorkers)assert.ok(validRoute('Assistants',worker));
+for(const page of ['DWs','DW Organisations','DW Settings'])assert.ok(validRoute('Assistants',page));
+assert.ok(validRoute('Documentation','Documentation'));
+assert.ok(validRoute('Settings','Database & Backup'));
 console.log('PASS: V26 all 12 workflow templates, case metadata, human gates, public case clarification/resumption/rejection, and routes.');
 
 // V27 data protection, data residency and migration planning models

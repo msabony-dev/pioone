@@ -1,3 +1,5 @@
+> **V42 UI update:** Workflow processes are Digital Worker roles under Digital Workers > DWs > Workflows. See [the V42 change notes](docs/PIOONE-V42-WORKFLOW-DIGITAL-WORKERS.md).
+
 # PioOne
 
 **The AI-Native Enterprise Workspace** · by PioVation
