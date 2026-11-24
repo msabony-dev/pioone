@@ -101,6 +101,9 @@ header{height:auto;min-height:68px;gap:16px;padding:10px 18px;flex-wrap:wrap}.to
 }
 @media(prefers-reduced-motion:reduce){.mobile-nav-layer *,.mobile-bottom-bar *{transition:none!important;animation:none!important}}
 
+/* V38 compact navigation / grouped settings */
+.context .side-advanced{margin:6px 8px 10px;border-top:1px solid var(--line,#dce6df);padding-top:8px}.context .side-advanced summary{font-size:12px;font-weight:650;color:var(--muted,#64766c);padding:8px 10px;cursor:pointer}.context .side-advanced button{width:100%;text-align:left}.rail button span{overflow-wrap:anywhere}
+
 /* V29: condensed, accessible workspace navigation */
 .v29-nav-group{margin:6px 4px;border-top:1px solid var(--border,#dde2e8);padding:8px 0 2px}
 .v29-nav-group summary{cursor:pointer;display:flex;align-items:center;gap:9px;font-weight:650;padding:10px 12px;list-style:none;border-radius:10px;font-size:.93rem}
