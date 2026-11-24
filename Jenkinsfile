@@ -28,6 +28,8 @@ pipeline {
         VITE_KEYCLOAK_URL = 'https://dev.auth.piosphere.ai'
         VITE_KEYCLOAK_REALM = 'pioone'
         VITE_KEYCLOAK_CLIENT_ID = 'pioone-web'
+
+        SLACK_CHANNEL = '#jenkins_notifications'
     }
 
     stages {
@@ -87,6 +89,19 @@ pipeline {
                     docker logs "$CONTAINER_NAME" || true
                     exit 1
                 '''
+            }
+        }
+    }
+
+    post {
+        success {
+            script {
+                slackSend(channel: SLACK_CHANNEL, color: 'good', message: "PioOne pipeline completed: built and deployed *${env.IMAGE_NAME}:${env.SHORT_COMMIT}* on port *${env.HOST_PORT}*.")
+            }
+        }
+        failure {
+            script {
+                slackSend(channel: SLACK_CHANNEL, color: 'danger', message: "PioOne pipeline failed while building or deploying *${env.IMAGE_NAME}*. Check the Jenkins logs.")
             }
         }
     }
