@@ -11,6 +11,8 @@ const englishByGerman:Record<string,string>=Object.fromEntries(
  Object.entries(deLabels).filter(([key,value])=>key!==value).map(([key,value])=>[value,key])
 );
 const directDE:Record<string,string>={
+ 'Create worker definitions, manage versions and publish releases.':'Worker-Definitionen erstellen, Versionen verwalten und Releases veröffentlichen.',
+ 'Manage worker assignments and digital positions. Create and version workers in the separate Worker Factory tab.':'Worker-Zuordnungen und digitale Stellen verwalten. Neue Worker und Versionen werden im separaten Tab Worker Factory erstellt.',
  'Active':'Aktiv','Deactivated':'Deaktiviert','Activate':'Aktivieren','Deactivate':'Deaktivieren',
  'Run':'Ausführen','Edit':'Bearbeiten','Save changes':'Änderungen speichern','Edit digital worker':'Digitalen Mitarbeiter bearbeiten',
  'Digital worker':'Digitaler Mitarbeiter','Digital worker profiles':'Digitale-Mitarbeiter-Profile',

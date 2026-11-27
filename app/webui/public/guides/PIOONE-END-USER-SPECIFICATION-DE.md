@@ -67,7 +67,9 @@ Digitale Mitarbeiter besitzen definierte Aufgaben, Berechtigungen, Werkzeuge, Fa
 
 Mein Assistent behält persönliche Briefings, PioBrain, Kommunikation, Aufgaben und Freigaben. Prozessorientierte Rollen stehen unter **Digital Workers (DW) > DWs > Workflows**: zwölf Workflow-Vorlagen sowie **DW-Workflow-Automation**. Alle Workflow-Rollen beginnen mit DW-, etwa DW-Lead-to-Cash und DW-Procure-to-Pay.
 
-**DW Organisations** zeigt digitale Positionen und Verantwortlichkeiten. Unter **DW Settings** verwaltet Worker Factory Definitionen und Versionen; Worker assignments steuert Rollenstatus und Laufzeitzuordnungen; Digital positions verwaltet Verantwortlichkeiten. **Settings > Database & Backup** enthält lokale Vorschauen für Datenbank- und Backup-Einstellungen.
+**DW Organisations** zeigt digitale Positionen und Verantwortlichkeiten. **Worker Factory** ist ein eigener Tab unter Digital Workers für Definitionen und Versionen. Unter **DW Settings** steuert Worker assignments Rollenstatus und Laufzeitzuordnungen; Digital positions verwaltet Verantwortlichkeiten. **Settings > Database & Backup** enthält lokale Vorschauen für Datenbank- und Backup-Einstellungen.
+
+Unter **Dateien & DMS** bietet **Lokaler Computer** die Auswahl eines lokalen Ordners mit Lesezugriff, Dateinamensuche, Vorschau und Download. Nach einem Neuladen muss der Ordner erneut ausgewählt werden. Lokale Dateien werden nicht automatisch hochgeladen, synchronisiert, indexiert oder für KI-Worker freigegeben. Die lokale Explorer-Ansicht verwendet derzeit deutsche Beschriftungen.
 
 Active/Deactivated, Run, Edit und Settings sind Demo-Bedienelemente. Run zeigt einen lokalen Vorschauhinweis und führt keinen produktiven Workflow aus. Vorhandene Worker-Versionen und Zuordnungen bleiben im gemeinsamen lokalen Browser-Register erhalten.
 

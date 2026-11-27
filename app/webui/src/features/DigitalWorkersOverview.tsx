@@ -4,6 +4,7 @@ import {useWorkspace} from '../stores/WorkspaceStore';
 import {useLanguage} from '../locales/i18n';
 import {Organisation} from './Organisation';
 import {DWSettings} from './DWSettings';
+import {WorkerRegistrySettings} from './WorkerRegistrySettings';
 import {DIGITAL_WORKER_CATEGORIES,DIGITAL_WORKER_DESCRIPTIONS} from './digitalWorkerCatalog';
 import './digitalWorkersOverview.css';
 export function DigitalWorkersOverview(){
@@ -13,6 +14,7 @@ export function DigitalWorkersOverview(){
  const [editName,setEditName]=useState('');const [editDescription,setEditDescription]=useState('');const [editing,setEditing]=useState(false);const [notice,setNotice]=useState('');
  if(page==='DW Organisations')return <div className="dw-page"><section className="hero"><small>{t('Digital Workers (DW)')}</small><h2>{t('DW Organisations')}</h2><p>{t('Digital positions, supervisors and workforce assignments.')}</p></section><Organisation dwOnly/></div>;
  if(page==='DW Settings')return <DWSettings/>;
+ if(page==='Worker Factory')return <div className="dw-page"><section className="hero"><small>{t('Digital Workers (DW)')}</small><h2>{t('Worker Factory')}</h2><p>{t('Create worker definitions, manage versions and publish releases.')}</p></section><WorkerRegistrySettings/><p className="dw-note">{t('Local demonstration only. Worker configuration does not deploy a production runtime.')}</p></div>;
  const list=workerState.workers.filter(w=>w.name.startsWith('DW-')||w.id.startsWith('worker-'));
  const current=page.startsWith('DW-')?list.find(w=>w.name===page):undefined;
  const groupFor=(name:string)=>DIGITAL_WORKER_CATEGORIES.find(c=>c.workers.some(n=>n===name))?.name||'Custom';
@@ -20,7 +22,7 @@ export function DigitalWorkersOverview(){
  const status=(w:typeof list[number])=>w.status==='active'?'active':'deactivated';
  const desc=(w:typeof list[number])=>w.description||DIGITAL_WORKER_DESCRIPTIONS[w.name]?.[language]||'';
  const run=(w:typeof list[number])=>setNotice(status(w)!=='active'?t('Activate the digital worker before running it.'):t('Demo only: No production worker runtime is connected. No job was executed.'));
- return <div className="dw-page"><section className="hero dw-hero"><small>{t('DIGITAL WORKFORCE')}</small><h2>{t('DWs')}</h2><p>{t('A catalog of enterprise digital workers. My Assistant is your first worker and has its own sidebar entry.')}</p><button className="primary" onClick={()=>go('Assistants','DW Settings')}><Plus size={17}/>{t('Create worker')}</button></section>
+ return <div className="dw-page"><section className="hero dw-hero"><small>{t('DIGITAL WORKFORCE')}</small><h2>{t('DWs')}</h2><p>{t('A catalog of enterprise digital workers. My Assistant is your first worker and has its own sidebar entry.')}</p><button className="primary" onClick={()=>go('Assistants','Worker Factory')}><Plus size={17}/>{t('Create worker')}</button></section>
  {notice&&<div className="dw-message" role="status">{notice}<button onClick={()=>setNotice('')}>×</button></div>}
  {current?<><div className="dw-header"><button className="outline" onClick={()=>{setEditing(false);go('Assistants','DWs')}}><ArrowLeft size={15}/>{t('All workers')}</button><span className={'dw-status '+status(current)}>{status(current)==='active'?t('Active'):t('Deactivated')}</span></div>
  <section className="card dw-detail"><span className="dw-avatar"><Bot size={27}/></span><div><small>{t('DIGITAL WORKER')} · {groupFor(current.name)}</small><h2>{current.name}</h2><p>{desc(current)}</p><p>{current.releases.length} {t('Versions')} · {Object.values(workerState.bindings).filter(b=>b.workerId===current.id).length} {t('Assignments')}</p><div className="dw-actions"><button className="outline" onClick={()=>run(current)}><Play size={15}/>{t('Run')}</button><button className="outline" disabled={!editable} onClick={()=>{setEditName(current.name);setEditDescription(current.description||'');setEditing(v=>!v)}}><Pencil size={15}/>{t('Edit')}</button><button className="outline" disabled={!editable} onClick={()=>update(current.id,{status:status(current)==='active'?'deactivated':'active'})}><Power size={15}/>{status(current)==='active'?t('Deactivate'):t('Activate')}</button><button className="primary" onClick={()=>go('Assistants','DW Settings')}><Settings2 size={15}/>{t('Settings')}</button></div></div></section>

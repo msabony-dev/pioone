@@ -102,7 +102,7 @@ for(const workflow of allV26)assert.ok(workflowWorkers.includes('DW-'+workflow.i
 assert.ok(workflowWorkers.includes('DW-Workflow-Automation'));
 assert.equal(new Set(DIGITAL_WORKER_NAMES).size,DIGITAL_WORKER_NAMES.length);
 for(const worker of workflowWorkers)assert.ok(validRoute('Assistants',worker));
-for(const page of ['DWs','DW Organisations','DW Settings'])assert.ok(validRoute('Assistants',page));
+for(const page of ['DWs','DW Organisations','Worker Factory','DW Settings'])assert.ok(validRoute('Assistants',page));
 assert.ok(validRoute('Documentation','Documentation'));
 assert.ok(validRoute('Settings','Database & Backup'));
 console.log('PASS: V26 all 12 workflow templates, case metadata, human gates, public case clarification/resumption/rejection, and routes.');

@@ -1,0 +1,51 @@
+import React,{useEffect,useMemo,useRef,useState} from 'react';
+import {ArrowLeft,ChevronRight,Download,File,FileImage,FileText,Folder,FolderOpen,Grid2X2,HardDrive,Info,List,LockKeyhole,Monitor,Search,ShieldCheck,X} from 'lucide-react';
+import './localExplorer.css';
+
+type FileSystemFileHandleLike={kind:'file';name:string;getFile:()=>Promise<File>};
+type FileSystemDirectoryHandleLike={kind:'directory';name:string;entries:()=>AsyncIterableIterator<[string,FileSystemEntryHandleLike]>};
+type FileSystemEntryHandleLike=FileSystemFileHandleLike|FileSystemDirectoryHandleLike;
+type DirectoryPickerWindow=Window & {showDirectoryPicker?: (options?:{mode?:'read'|'readwrite'})=>Promise<FileSystemDirectoryHandleLike>};
+type LocalEntry={name:string;kind:'file'|'directory';handle:FileSystemEntryHandleLike};
+
+const fmtSize=(n:number)=>n<1024?`${n} B`:n<1048576?`${(n/1024).toFixed(1)} KB`:`${(n/1048576).toFixed(1)} MB`;
+export function folderFromFiles(files:File[]):FileSystemDirectoryHandleLike{
+ type Tree={name:string;children:Map<string,Tree|FileSystemFileHandleLike>};
+ const root:Tree={name:files[0]?.webkitRelativePath.split('/')[0]||'Lokaler Ordner',children:new Map()};
+ files.forEach(file=>{const parts=(file.webkitRelativePath||file.name).split('/').filter(Boolean);if(parts[0]===root.name)parts.shift();let current=root;for(const part of parts.slice(0,-1)){let child=current.children.get(part);if(!child||'kind' in child){child={name:part,children:new Map()} as Tree;current.children.set(part,child)}current=child as Tree}if(parts.length)current.children.set(parts[parts.length-1],{kind:'file',name:file.name,getFile:async()=>file})});
+ const convert=(tree:Tree):FileSystemDirectoryHandleLike=>({kind:'directory',name:tree.name,async *entries(){for(const [name,child] of tree.children){yield [name,('children' in child?convert(child):child) as FileSystemEntryHandleLike] as [string,FileSystemEntryHandleLike]}}});
+ return convert(root);
+}
+const readable=(file:File)=>file.type.startsWith('text/')||/\.(md|json|txt|csv|xml|log|ts|tsx|js|jsx|css|html|yaml|yml)$/i.test(file.name);
+
+export function LocalComputerExplorer(){
+ const [root,setRoot]=useState<FileSystemDirectoryHandleLike|null>(null);
+ const [trail,setTrail]=useState<FileSystemDirectoryHandleLike[]>([]);
+ const [entries,setEntries]=useState<LocalEntry[]>([]);
+ const [query,setQuery]=useState('');
+ const [layout,setLayout]=useState<'list'|'grid'>('list');
+ const [selected,setSelected]=useState<LocalEntry|null>(null);
+ const [preview,setPreview]=useState<{name:string;type:'image'|'pdf'|'text'|'other';value:string;size:number}|null>(null);
+ const [error,setError]=useState('');const [busy,setBusy]=useState(false);const folderInput=useRef<HTMLInputElement>(null);
+ const current=trail[trail.length-1]??root;
+ useEffect(()=>{let alive=true;setSelected(null);setPreview(null);setQuery('');if(!current){setEntries([]);return}setBusy(true);setError('');(async()=>{try{const next:LocalEntry[]=[];for await(const [name,handle] of current.entries()){next.push({name,kind:handle.kind,handle});if(next.length>=3000)break}next.sort((a,b)=>a.kind===b.kind?a.name.localeCompare(b.name,'de',{numeric:true}):a.kind==='directory'?-1:1);if(alive)setEntries(next)}catch{if(alive)setError('Der Ordner konnte nicht gelesen werden. Bitte den Zugriff im Browser erneut erlauben.')}finally{if(alive)setBusy(false)}})();return()=>{alive=false}},[current]);
+ useEffect(()=>()=>{if(preview?.type==='image'||preview?.type==='pdf')URL.revokeObjectURL(preview.value)},[preview]);
+ const pickFolder=async()=>{const fn=(window as DirectoryPickerWindow).showDirectoryPicker;if(!fn){folderInput.current?.click();return}try{const handle=await fn.call(window,{mode:'read'});setRoot(handle);setTrail([]);setError('')}catch(e){if((e as Error).name!=='AbortError')setError('Der Ordnerzugriff konnte nicht geöffnet werden.')}};
+ const openEntry=async(entry:LocalEntry)=>{setSelected(entry);if(entry.kind==='directory'){setTrail(p=>[...p,entry.handle as FileSystemDirectoryHandleLike]);return}setPreview(null);try{const file=await (entry.handle as FileSystemFileHandleLike).getFile();if(file.type.startsWith('image/'))setPreview({name:file.name,type:'image',value:URL.createObjectURL(file),size:file.size});else if(file.type==='application/pdf')setPreview({name:file.name,type:'pdf',value:URL.createObjectURL(file),size:file.size});else if(readable(file)&&file.size<=1024*1024)setPreview({name:file.name,type:'text',value:await file.text(),size:file.size});else setPreview({name:file.name,type:'other',value:'Für diesen Dateityp steht keine integrierte Vorschau bereit.',size:file.size})}catch{setError('Die Datei kann nicht gelesen werden.')}};
+ const download=async(entry:LocalEntry)=>{if(entry.kind!=='file')return;try{const file=await (entry.handle as FileSystemFileHandleLike).getFile();const url=URL.createObjectURL(file);const a=document.createElement('a');a.href=url;a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)}catch{setError('Download fehlgeschlagen.')}};
+ const shown=useMemo(()=>entries.filter(e=>e.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())),[entries,query]);
+ return <div className="p42-local-explorer">
+  <div className="p42-local-intro"><div><h3><Monitor size={22}/> Lokaler Computer</h3><p>Ordner deines Macs oder Windows-PCs direkt in PioOne durchsuchen – ohne zusätzliche Desktop-App.</p></div><span className="p42-local-security"><ShieldCheck size={16}/> Nur Lesezugriff</span></div>
+  <div className="p42-local-warning"><LockKeyhole size={18}/><span>Dein Browser benötigt deine ausdrückliche Ordnerauswahl. Dateien werden nur lokal angezeigt und nicht automatisch in die PioVation Cloud hochgeladen. Die Auswahl muss nach einem Neuladen der Seite erneut bestätigt werden.</span></div>
+  <input ref={folderInput} type="file" multiple hidden {...({webkitdirectory:'',directory:''} as React.InputHTMLAttributes<HTMLInputElement>)} onChange={event=>{const files=Array.from(event.currentTarget.files||[]);event.currentTarget.value='';if(files.length){setRoot(folderFromFiles(files));setTrail([]);setError('')}else setError('Kein Ordner ausgewählt.')}}/>
+  <div className="p42-local-controls"><button className="primary" onClick={()=>void pickFolder()}><FolderOpen size={17}/>{root?'Anderen Ordner öffnen':'Ordner auf meinem Computer öffnen'}</button>{root&&<><button className="outline" disabled={!trail.length} onClick={()=>setTrail(p=>p.slice(0,-1))}><ArrowLeft size={17}/> Zurück</button><label className="p42-local-search"><Search size={16}/><input aria-label="Lokale Dateien suchen" value={query} onChange={e=>setQuery(e.target.value)} placeholder="In diesem Ordner suchen"/></label><div className="p42-local-view"><button aria-label="Listenansicht" aria-pressed={layout==='list'} onClick={()=>setLayout('list')}><List size={17}/></button><button aria-label="Rasteransicht" aria-pressed={layout==='grid'} onClick={()=>setLayout('grid')}><Grid2X2 size={17}/></button></div></>}</div>
+  {error&&<p className="p42-local-error" role="alert"><Info size={16}/>{error}</p>}
+  {!root?<div className="p42-local-empty"><HardDrive size={47}/><h3>Deine Dateien – innerhalb von PioOne</h3><p>Wähle einen Ordner aus. Danach kannst du Unterordner öffnen, Dateien suchen und PDFs, Bilder oder Textdateien ansehen. Keine automatische Synchronisierung.</p><button className="outline" onClick={()=>void pickFolder()}>Ordner auswählen</button></div>:<>
+   <nav className="p42-local-breadcrumb" aria-label="Ordnerpfad"><button onClick={()=>setTrail([])}><HardDrive size={15}/>{root.name}</button>{trail.map((d,i)=><React.Fragment key={i}><ChevronRight size={14}/><button onClick={()=>setTrail(p=>p.slice(0,i+1))}>{d.name}</button></React.Fragment>)}</nav>
+   <div className="p42-local-area"><div className="p42-local-files"><div className="p42-local-filecount">{busy?'Ordner wird geladen …':`${shown.length} Elemente im Ordner`}</div><div className={`p42-local-items ${layout==='grid'?'p42-local-grid':''}`}>{shown.map((e,i)=><button key={e.name+i} className={`p42-local-item ${selected?.name===e.name?'selected':''}`} onClick={()=>{if(e.kind==='file')void openEntry(e);else setSelected(e)}} onDoubleClick={()=>void openEntry(e)}><span className="p42-local-item-icon">{e.kind==='directory'?<Folder size={22}/>: /\.(png|jpe?g|gif|webp|svg)$/i.test(e.name)?<FileImage size={21}/>: /\.(pdf|docx?|txt|md)$/i.test(e.name)?<FileText size={21}/>:<File size={21}/>}</span><span className="p42-local-name">{e.name}</span>{e.kind==='directory'&&<span className="p42-local-open" onClick={ev=>{ev.stopPropagation();void openEntry(e)}}>Öffnen <ChevronRight size={14}/></span>}{e.kind==='file'&&<span className="p42-local-open" onClick={ev=>{ev.stopPropagation();void download(e)}}><Download size={15}/></span>}</button>)}</div>{!busy&&!shown.length&&<p className="p42-local-noresults">Keine passenden Dateien vorhanden.</p>}</div>
+    <aside className="p42-local-preview"><div className="p42-local-preview-head"><strong>Vorschau</strong>{selected&&<button aria-label="Auswahl aufheben" onClick={()=>{setSelected(null);setPreview(null)}}><X size={15}/></button>}</div>{selected?<><h4>{selected.name}</h4>{selected.kind==='directory'?<><p>Ordner</p><button className="outline" onClick={()=>void openEntry(selected)}><FolderOpen size={15}/> Öffnen</button></>:preview?<><p>{fmtSize(preview.size)} · {preview.type==='other'?'Keine Vorschau':preview.type.toUpperCase()}</p>{preview.type==='image'?<img src={preview.value} alt={preview.name}/>:preview.type==='pdf'?<iframe title={`Vorschau ${preview.name}`} src={preview.value}/>:preview.type==='text'?<pre>{preview.value}</pre>:<p>{preview.value}</p>}<button className="outline" onClick={()=>void download(selected)}><Download size={15}/> Datei herunterladen</button></>:<p>Zum Öffnen einer Datei anklicken.</p>}</>:<div className="p42-local-preview-empty"><FileText size={30}/><p>Datei auswählen, um Informationen und Vorschau zu sehen.</p></div>}</aside>
+   </div>
+  </>}
+  <p className="p42-local-footer">Hinweis: Dies ist ein Browser-Dateiexplorer mit ausdrücklich erlaubtem Lesezugriff, kein eingebetteter nativer Finder oder Windows-Explorer. Netzwerkfreigaben, Dateiverwaltung mit Schreibrechten und dauerhafte Synchronisierung erfordern gesonderte Schnittstellen.</p>
+ </div>
+}
