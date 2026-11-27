@@ -6,7 +6,7 @@
 // Job trigger: "GitHub hook trigger for GITScm polling".
 //
 // VITE_* is compiled into the JS bundle. Changing Keycloak means a rebuild.
-// Sign-in uses the pioone realm on dev.auth.piosphere.ai. Demo mode is local only.
+// Sign-in uses the piocloud realm on dev.auth.piosphere.ai. Demo mode is local only.
 pipeline {
     agent any
 
@@ -26,8 +26,8 @@ pipeline {
         // there is no client secret to inject when the container starts.
         VITE_AUTH_MODE = 'keycloak'
         VITE_KEYCLOAK_URL = 'https://dev.auth.piosphere.ai'
-        VITE_KEYCLOAK_REALM = 'pioone'
-        VITE_KEYCLOAK_CLIENT_ID = 'pioone-web'
+        VITE_KEYCLOAK_REALM = 'piocloud'
+        VITE_KEYCLOAK_CLIENT_ID = 'piocloud-client'
 
         SLACK_CHANNEL = '#jenkins_notifications'
     }
