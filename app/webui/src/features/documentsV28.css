@@ -17,3 +17,6 @@
  .v28-table tbody td[data-label="Actions"]{justify-content:flex-end}.v28-table tbody td[data-label="AI access"]{justify-content:flex-start}.v28-row-actions button{min-width:36px;min-height:36px;justify-content:center}
 }
 @media(max-width:440px){.v28-folder-grid{grid-template-columns:minmax(0,1fr)}.v28-welcome{align-items:flex-start}.v28-header .v28-demo{font-size:10px}}
+
+/* V42.2: One PioOne shell with native-style DMS and local computer sources */
+.p42-explorer-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px}.p42-explorer-sources button{display:flex;gap:8px;align-items:center;padding:11px 14px;border-radius:9px;border:1px solid var(--line);font-size:12px;font-weight:650}.p42-explorer-sources button.selected{background:var(--soft);color:var(--green);border-color:var(--green)}

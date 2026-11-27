@@ -56,7 +56,9 @@ A digital worker has a defined role, permitted data sources, assigned applicatio
 ### V42 navigation and workflow Digital Workers
 My Assistant keeps personal briefings, PioBrain, communication, tasks and approvals. Process-oriented roles are under **Digital Workers (DW) > DWs > Workflows**, with twelve workflow templates plus **DW-Workflow-Automation**. Every workflow role begins with DW-, including DW-Lead-to-Cash and DW-Procure-to-Pay.
 
-Use **DW Organisations** to view digital positions and responsibilities. Under **DW Settings**, Worker Factory manages worker definitions and versions; Worker assignments controls role status and runtime bindings; Digital positions manages accountability. **Settings > Database & Backup** contains local database and backup configuration previews.
+Use **DW Organisations** to view digital positions and responsibilities. **Worker Factory** is a separate Digital Workers tab for worker definitions and versions. Under **DW Settings**, Worker assignments controls role status and runtime bindings; Digital positions manages accountability. **Settings > Database & Backup** contains local database and backup configuration previews.
+
+In **Files & DMS**, the **Local Computer** source lets you choose a folder on your computer for read-only browsing, filename search, file previews and downloads. Folder selection is required again after reload. Local files are not automatically uploaded, synced, indexed or made available to AI workers. The supplied local explorer currently uses German labels.
 
 Active/Deactivated, Run, Edit and Settings controls are demonstration interactions. Run displays a local preview warning; it does not execute a production workflow. Existing worker versions and bindings remain in the shared browser-local registry.
 
